@@ -14,23 +14,28 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Assignment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String title;
+
+    private String description;
+
+    private Date dueDate;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Class classEntity;
+    @JoinColumn(name = "course_id")
+    private Course courseEntity;
 
     @ManyToOne
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
-
-    @Column(nullable = false)
-    private String title;
-    private String description;
-    private Date dueDate;
-    private LocalDateTime createdAt = LocalDateTime.now();
-    private LocalDateTime updatedAt = LocalDateTime.now();
 }
 

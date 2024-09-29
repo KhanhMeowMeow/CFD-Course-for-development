@@ -22,9 +22,13 @@ public class Lesson {
     private String title;
 
     private String content;
+
     private int duration;
+
     private int numberOfAttachments = 0;
+
     private LocalDateTime createdAt = LocalDateTime.now();
+
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     @ManyToOne
@@ -32,12 +36,10 @@ public class Lesson {
     private LessonType lessonType;
 
     @OneToMany(mappedBy = "lesson")
-    private List<Comment> comments;
-
-    @OneToMany(mappedBy = "lesson")
     private List<Quiz> quizzes;
 
-    @OneToMany(mappedBy = "lesson")
-    private List<Session> sessions;
+    @ManyToOne
+    @JoinColumn(name = "session_id")
+    private Session session;
 }
 

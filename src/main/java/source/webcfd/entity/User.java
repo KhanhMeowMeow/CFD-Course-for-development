@@ -44,8 +44,4 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Course> courses;
 
-    @OneToMany(mappedBy = "user")
-    private List<Enrollment> enrollments;
-
-    // Other relationships
 }

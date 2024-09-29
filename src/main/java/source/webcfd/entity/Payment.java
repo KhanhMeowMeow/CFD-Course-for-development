@@ -27,7 +27,11 @@ public class Payment {
     private User user;
 
     private BigDecimal amount;
-    private LocalDateTime paymentDate;
+
+    private LocalDateTime paymentDate= LocalDateTime.now();
+
+    @Column(name = "enrollment", columnDefinition = "bit")
+    private Boolean enrollment;
 
     @ManyToOne
     @JoinColumn(name = "payment_status_id")

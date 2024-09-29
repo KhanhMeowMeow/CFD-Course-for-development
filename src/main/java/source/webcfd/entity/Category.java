@@ -5,23 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "Analytics")
+@Table(name = "Course_Tags")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Analytics {
+public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name_tag",columnDefinition = "nvarchar(100)")
+    private String nameTag;
+
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
-
-    private int views;
-    private int clicks;
-    private LocalDateTime analyticsDate = LocalDateTime.now();
 }
+

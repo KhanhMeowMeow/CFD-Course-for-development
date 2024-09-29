@@ -23,27 +23,35 @@ public class Course {
     private String title;
 
     private String description;
+
     private String category;
+
     private BigDecimal rating = BigDecimal.ZERO;
+
     private int numberOfRatings = 0;
+
     private int numberOfStudents = 0;
+
     private BigDecimal price = BigDecimal.ZERO;
+
     private String language = "English";
+
     private LocalDateTime createdAt = LocalDateTime.now();
+
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     @ManyToOne
     @JoinColumn(name = "created_by")
     private User user;
 
-    @OneToMany(mappedBy = "course")
-    private List<Enrollment> enrollments;
-
-    @OneToMany(mappedBy = "course")
-    private List<Review> reviews;
-
     @ManyToOne
     @JoinColumn(name = "course_level_id")
     private CourseLevel courseLevel;
+
+    @OneToMany(mappedBy = "course")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "courseEntity")
+    private List<Assignment> assignments;
 }
 
